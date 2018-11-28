@@ -1,0 +1,39 @@
+create table pessoas (
+id_pessoa int NOT NULL auto_increment ,
+nome varchar (50),
+email varchar (100) unique,
+sexo char(1),
+primary key (id_pessoa)
+);
+
+
+create table tarefa (
+id_tarefa int NOT NULL auto_increment ,
+titulo varchar (200) unique,
+prazo_estimado date,
+descricao varchar (200),
+data_inicio date NOT NULL,
+data_termino date, 
+primary key (id_tarefa)
+);
+
+create table metodologia (
+id_metodologia int NOT NULL auto_increment , 
+titulo varchar (50),
+primary key (id_metodologia)
+);
+
+create table influenciador (
+id_influenciador int NOT NULL auto_increment , 
+nome varchar (50),
+primary key (id_influenciador	)
+);
+
+create table tarefa_participantes (
+id_participante int NOT NULL primary key auto_increment ,
+id_tarefa int NOT NULL,
+id_pessoa int NOT NULL, 
+
+foreign key (id_tarefa) references tarefa (id_tarefa), 
+foreign key (id_pessoa) references pessoas(id_pessoa)
+);
